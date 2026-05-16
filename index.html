@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<style>
+
+table, th, td {
+
+  border:1px solid black;
+
+}
+
+</style>
+
+<body>
+
+
+
+  <p>Dirección de la unidad hospitalaria</p>
+
+<h1>Historia Clínica acorde con la NOM vigente 168-SSA1-1998</h1>
+
+
+
+<table style="width:100%">
+
+  <tr>
+
+    <td>
+
+    <p>Médico tratante:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Samuel Zamudio Gamboa">
+
+    </td>
+
+    <td>
+    <p>Fecha de Historial Clinico:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="17 de Abril de 2026">
+    </td>
+
+
+
+  </tr>
+
+  <tr>
+
+    <td>
+<p>Nombre de paciente:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Gerardo Garcia Esliter">
+    </td>
+
+    <td>
+<p>Edad:      Sexo:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="32">
+    <input type="text" id="fname" name="fname" placeholder="No binario">
+    </td>
+
+ 
+
+  </tr>
+
+
+
+    <tr>
+
+    <td>
+        <p>Domicilio:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Nava">
+</td>
+
+    <td>
+    <p>Telefono:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="664-443-4598">  
+    </td>
+
+  </tr>
+
+
+
+    <tr>
+
+    <td>
+    <p>Datos completos de familiar responsable:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Mama y Papa">
+    </td>
+
+    <td>
+       <p>Religion:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Catolico">   
+    </td>
+
+ 
+
+  </tr>
+
+
+
+    <tr>
+
+    <td>  <p>Fecha de nacimiento:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="9 de Agosto de 2007">
+</td>
+
+    <td>
+      <p>Peso:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="112 kg">
+    </td>
+
+ 
+
+  </tr>
+
+</table>
+
+<style>
+
+table, th, td {
+
+  border:1px solid black;
+
+}
+
+</style>
+
+<body>
+
+
+
+  
+
+<h1>Antecedentes Hereditarios y Familiares</h1>
+
+
+
+<table style="width:100%">
+
+  <tr>
+
+    <td>
+
+    <p>-Diabetes mellitus</p>
+<p>-HAS</p>
+    
+
+    </td>
+
+    <td>
+    <h3>Familiar que lo padece</h3>
+    <p>-Hermanos</p>
+    <p>Padres, hermanos</p>
+
+    
+    </td>
+
+
+
+  </tr>
+
+  <tr>
+ 
+</tr>
+</table>
+
+<script>
+function enviar (){
+
+const Médicotratante = document.getElementById("Médicotratante").value;
+const NombrePaciente = document.getElementById("NombrePaciente").value;
+const Domicilio = document.getElementById("Domicilio").value;
+const Datoscompletosdefamiliarresponsable = document.getElementById("Datoscompletosdefamiliarresponsable").value;
+const FechadeNacimiento = document.getElementById("FechadeNacimiento").value;
+const FechadeHistoriaClínica = document.getElementById("FechadeHistoriaClínica").value;
+const Teléfono = document.getElementById("Teléfono").value;
+const Religión = document.getElementById("Religión").value;
+const Peso = document.getElementById("Peso").value;
+const LugardeNacimiento = document.getElementById("LugardeNacimiento").value;
+const Ejercicio = document.getElementById("Ejercicio").value;
+
+document.getElementById("mensaje").innerText = "Compñeta los Campos";
+if (Médicotratante===""|| NombrePaciente === ""|| Domicilio=== ""|| Datoscompletosdefamiliarresponsable=== ""|| FechadeNacimiento===""|| FechadeHistoriaClínica === ""|| Teléfono=== ""|| Religión=== ""|| Peso === ""|| LugardeNacimiento=== ""|| Ejercicio=== ""){
+return;
+}
+const datos = {
+  Médicotratante: Médicotratante,
+  NombrePaciente: NombrePaciente,
+  Domicilio: Domicilio,
+  Datoscompletosdefamiliarresponsable: Datoscompletosdefamiliarresponsable,
+  FechadeNacimiento: FechadeNacimiento,
+  FechadeHistoriaClínica: FechadeHistoriaClínica,
+  Teléfono: Teléfono,
+  Religión: Religión,
+  Peso: Peso,
+  LugardeNacimiento: LugardeNacimiento,
+  Ejercicio: Ejercicio,
+
+}; //fetch va la direccion de la app de hojas de calculo
+//cambiar fetch
+fetch ("https://script.google.com/macros/s/AKfycbz0xpDiZIf2xIWxVPQdiRGKSwNz5SGda0_TY_m3udHbOmLkBvwPiIa8C_GWl85zCnFx9Q/exec", {
+
+method: "POST",
+body: JSON.stringify(datos),
+mode: "no-cors"
+})
+.then(()=> {
+document.getElementById("mensaje").innerText = "Datos enviados"
+
+})
+
+.catch (() => {
+document.getElementById("mensaje").innerText = "Error al enviar"
+
+});
+
+//limpiar
+document.getElementById("Médicotratante").value = "";
+document.getElementById("NombrePaciente").value = "";
+document.getElementById("Domicilio").value = "";
+document.getElementById("Datoscompletosdefamiliarresponsable").value = "";
+document.getElementById("FechadeNacimiento").value = "";
+document.getElementById("FechadeHistoriaClínica").value = "";
+document.getElementById("Teléfono").value = "";
+document.getElementById("Religión").value = "";
+document.getElementById("Peso").value = "";
+document.getElementById("LugardeNacimiento").value = "";
+document.getElementById("Ejercicio").value = "";
+}
+
+</script>
+</body>
+
+
+</html>
+
